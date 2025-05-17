@@ -7,7 +7,7 @@ def display(arr):
 def add(arr, data, location):
     index = location - 1
     if index < 0 or index > len(arr):
-        print("Lokasi Invalid")
+        print("Lokasi invalid")
         return arr
     new_arr = []
     for i in range(index):
@@ -21,7 +21,7 @@ def add(arr, data, location):
 def delete(arr, location):
     index = location - 1
     if index < 0 or index >= len(arr):
-        print("Lokasi Invalid")
+        print("Lokasi invalid")
         return arr
     new_arr = []
     for i in range(index):
@@ -44,11 +44,17 @@ while True:
         display(array)
     elif choice == '2':
         data = input("Masukkan data yang akan ditambahkan: ")
-        location = int(input("Masukkan lokasi penambahan (1-{}): ".format(len(array))))
-        array = add(array, data, location)
+        location_input = input("Masukkan lokasi penambahan (1-{}): ".format(len(array)))
+        if not location_input.isdigit():
+            print("Lokasi invalid")
+            continue
+        array = add(array, data, int(location_input))
     elif choice == '3':
-        location = int(input("Masukkan lokasi data yang akan dihapus (1-{}): ".format(len(array))))
-        array = delete(array, location)
+        location_input = input("Masukkan lokasi data yang akan dihapus (1-{}): ".format(len(array)))
+        if not location_input.isdigit():
+            print("Lokasi invalid")
+            continue
+        array = delete(array, int(location_input))
     elif choice == '4':
         print("Keluar dari program.")
         break
