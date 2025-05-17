@@ -3,7 +3,7 @@ maxdata = 8
 
 print("Masukkan nama item untuk ditambahkan ke stack.")
 print(f"Maksimal item: {maxdata}.")
-print("Ketik 'q' atau 'n' untuk keluar dan menampilkan isi stack.\n")
+print("Ketik 'q' untuk keluar dan menampilkan isi stack.\n")
 
 while True:
     user_input = input("Tambah item (atau 'q' untuk keluar): ").strip()
