@@ -10,7 +10,7 @@ stack.append('Gading')
 stack.append('Imelda')
 stack.append('Harahap')
 stack.append('Jonathan')
-stack.append('Karina')
+stack.append('Kontol')
 
 print("Isi Tumpukan:")
 while(stack):
