@@ -55,10 +55,3 @@ while True:
     else:
         print("Pilihan tidak valid, silakan coba lagi.")
 
-# display(array)
-
-# array = add(array, 'x', 3)
-# display(array)
-
-# array = delete(array, 2)
-# display(array)
