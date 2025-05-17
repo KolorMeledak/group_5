@@ -1,14 +1,21 @@
 stack = []
 maxdata = 8
-items_to_add = ['Amira', 'Baidah', 'Citra', 'Dody', 'Edy', 'Falino', 'Gading', 'Imelda', 'Harahap', 'Jonathan', 'Karina']
 
-for item in items_to_add:
-    if len(stack) < maxdata:
-        stack.append(item)
-    else:
-        print("Tumpukan penuh! Elemen yang tidak dimasukkan:", ", ".join(items_to_add[maxdata:]))
+print("Masukkan nama item untuk ditambahkan ke stack.")
+print(f"Maksimal item: {maxdata}.")
+print("Ketik 'q' atau 'n' untuk keluar dan menampilkan isi stack.\n")
+
+while True:
+    user_input = input("Tambah item (atau 'q' untuk keluar): ").strip()
+    if user_input.lower() == 'q':
         break
 
-print("\nIsi Tumpukan:")
+    if len(stack) < maxdata:
+        stack.append(user_input)
+        print(f"'{user_input}' ditambahkan. (Total item: {len(stack)}/{maxdata})")
+    else:
+        print(f"Stack penuh! '{user_input}' tidak bisa ditambahkan.")
+
+print("\nIsi Stack")
 while stack:
     print(stack.pop())
