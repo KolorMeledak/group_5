@@ -13,6 +13,8 @@ def conversion(target, number):
             int_number //= target
 
         if frac_number > 0:
+            if result == "":
+                result = "0"
             result += "."
             while frac_number > 0:
                 frac_number *= target
@@ -22,7 +24,7 @@ def conversion(target, number):
         return result
 while True:
     print("KONVERSI BILANGAN")    
-    conversion_target = int(input("Masukkan target bilangan (2, 8, 16): "))
+    conversion_target = int(input("Masukkan basis bilangan tujuan (2, 8, 16): "))
     conversion_number = float(input("Masukkan angka yang akan dikonversi: "))
     print(f"Angka {conversion_number} dalam basis {conversion_target} adalah: {conversion(conversion_target, conversion_number)}")
     print("Coba lagi? (y/n)")
