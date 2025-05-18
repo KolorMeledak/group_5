@@ -18,6 +18,33 @@ while True:
 
     print(f"\n[3] isi stack setelah dibalik: {reversed_string}")
 
+    #Untuk membalik string paragraf
+    # print("\n[4] isi stack setelah dibalik (paragraf)")
+    # try:
+    #     with open("paragraf.txt", "r", encoding="utf-8") as file:
+    #         isi_paragraf = file.read()
+    #         daftar_paragraf = isi_paragraf.split("\n\n")
+
+    #         for paragraf in daftar_paragraf:
+    #             # print(f"\nIsi paragraf: {paragraf}")
+
+    #             stack_paragraf = []
+    #             for char in paragraf:
+    #                 stack_paragraf.append(char)
+    #                 # print(f" Push: {char} -> Stack sekarang: {stack_paragraf}")
+
+    #             reversed_paragraf = ""
+    #             while stack_paragraf:
+    #                 popped_char = stack_paragraf.pop()
+    #                 reversed_paragraf += popped_char
+    #                 # print(f" Pop: {popped_char} -> Hasil sementara: {reversed_paragraf}")
+
+    #             print(f"\n{reversed_paragraf}")
+    
+    # except FileNotFoundError:
+    #     print("File 'paragraf.txt' tidak ditemukan. Pastikan file tersebut ada di direktori yang sama dengan skrip ini.")
+
+
     while True:
         pilihan_lanjut = input("\nApakah Anda ingin melakukan pembalikan lagi? (y/n): ")
         if pilihan_lanjut.lower() == 'y':
