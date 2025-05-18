@@ -1,7 +1,7 @@
 tumpukan = ["agus","beni","budy","ianto"]
 
 while True:
-    print(f"Current Stack: {", ".join(tumpukan)}")
+    print(f"Current Stack: \n{"\n".join(reversed(tumpukan))}")
     selection = input("1. Tambah Stack\n2. Kurangi Stack\n0. Exit\n")
 
     match selection:
