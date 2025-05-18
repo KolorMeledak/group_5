@@ -1,38 +1,32 @@
-def number_convertion(num):
-    if num == 0:
-        return {"binary": "0", "octal": "0", "hexadecimal": "0"}
+def conversion(target, number):
+
+    symbols = "0123456789ABCDEF"
+    result = ""
+    int_number = int(number)
+    frac_number = number - int_number
     
-    bases = {2: "binary", 8: "octal", 16: "hexadecimal"}
-    results = {}
+    if number == 0:
+        return "0"
+    else:
+        while int_number > 0:
+            result = symbols[int_number % target] + result
+            int_number //= target
 
-    for base, name in bases.items():
-        steps = []
-        result = ""
-        original = num
-        temp_n = num
+        if frac_number > 0:
+            if result == "":
+                result = "0"
+            result += "."
+            while frac_number > 0:
+                frac_number *= target
+                result += symbols[int(frac_number)]
+                frac_number -= int(frac_number)
 
-        while temp_n > 0:
-            quotient = temp_n // base
-            remainder = temp_n % base
-            symbols = "0123456789ABCDEF"
-            steps.append(f"{temp_n} : {base} = {quotient}, remainder {symbols[remainder]}")
-            result = symbols[remainder] + result
-            temp_n = quotient
-
-        print(f"Converting {original} to {name}:")
-        print("\n".join(steps))
-        print(f"Final result: {result}\n")
-
-        results[name] = result
-    
-    return results
-
+        return result
 while True:
-    user_input = input("Enter a decimal number (or 'q' to quit): ")
-    if user_input.lower() == "q":
+    print("KONVERSI BILANGAN")    
+    conversion_target = int(input("Masukkan basis bilangan tujuan (2, 8, 16): "))
+    conversion_number = float(input("Masukkan angka yang akan dikonversi: "))
+    print(f"Angka {conversion_number} dalam basis {conversion_target} adalah: {conversion(conversion_target, conversion_number)}")
+    print("Coba lagi? (y/n)")
+    if input().lower() != 'y':
         break
-    
-    num = int(user_input)
-    number_convertion(num)
-
-print("Thanks!")
