@@ -15,7 +15,7 @@ while repeater:
         case "2":
             if tumpukan:
                 print(f"Removed {tumpukan[-1]}")
-                tumpukan.pop(-1)
+                tumpukan.pop()
             else:
                  print("Can't remove from an empty stack")
         case "3":
