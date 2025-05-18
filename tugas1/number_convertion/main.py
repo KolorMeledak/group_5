@@ -1,3 +1,5 @@
+import os
+
 def conversion(target, number):
 
     symbols = "0123456789ABCDEF"
@@ -23,6 +25,7 @@ def conversion(target, number):
 
         return result
 while True:
+    os.system('cls')  # Clear terminal on Windows
     print("KONVERSI BILANGAN")    
     conversion_target = int(input("Masukkan basis bilangan tujuan (2, 8, 16): "))
     conversion_number = float(input("Masukkan angka yang akan dikonversi: "))
