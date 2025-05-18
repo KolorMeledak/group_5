@@ -1,14 +1,15 @@
 array = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+# array=[]
 
 def display(arr):
+    if not arr:
+        print("Array kosong.")
+        return
     for i in range(len(arr)):
         print(f'Data ke-{i+1}: {arr[i]}')
         
 def add(arr, data, location):
     index = location - 1
-    if index < 0 or index > len(arr):
-        print("Lokasi invalid")
-        return arr
     new_arr = []
     for i in range(index):
         new_arr.append(arr[i])
@@ -20,9 +21,6 @@ def add(arr, data, location):
 
 def delete(arr, location):
     index = location - 1
-    if index < 0 or index >= len(arr):
-        print("Lokasi invalid")
-        return arr
     new_arr = []
     for i in range(index):
         new_arr.append(arr[i])
@@ -33,35 +31,49 @@ def delete(arr, location):
 
 print('Operasi array')
 while True:
-    print("1. Tampilkan array")
+    print("\n1. Tampilkan array")
     print("2. Tambah data")
     print("3. Hapus data")
     print("4. Keluar")
     
-    choice = input("Pilih operasi (1-4): ")
+    choice = input("\nPilih operasi (1-4): ")
      
     if choice == '1':
-        print('\n')
         display(array)
+        
     elif choice == '2':
-        print('\n')
         data = input("Masukkan data yang akan ditambahkan: ")
         data = ' '.join(data.split())
-        location_input = input("Masukkan lokasi penambahan (1-{}): ".format(len(array)))
-        if not location_input.isdigit():
+        if not data:
+            print("Input tidak boleh kosong")
+            continue
+
+        if len(array) == 0:
+            location_input = '1'
+        else:
+            location_input = input(f"Masukkan lokasi penambahan (1-{len(array)+1}): ")
+        if not location_input.isdigit() or int(location_input) < 1 or int(location_input) > len(array) + 1:
             print("Lokasi invalid")
             continue
         array = add(array, data, int(location_input))
+        
     elif choice == '3':
-        print('\n')
-        location_input = input("Masukkan lokasi data yang akan dihapus (1-{}): ".format(len(array)))
-        if not location_input.isdigit():
+        if len(array) == 0:
+            print("Array kosong, tidak ada data yang bisa dihapus.")
+            continue
+        elif len(array) == 1:
+            print("Hanya ada satu data, data tersebut akan dihapus.")
+            array = []
+            continue
+        location_input = input(f"Masukkan lokasi data yang akan dihapus (1-{len(array)}): ")
+        if not location_input.isdigit() or int(location_input) < 1 or int(location_input) > len(array):
             print("Lokasi invalid")
             continue
         array = delete(array, int(location_input))
+        
     elif choice == '4':
         print("Keluar dari program.")
         break
+    
     else:
         print("Pilihan tidak valid, silakan coba lagi.")
-    print('\n')
