@@ -18,7 +18,16 @@ while True:
 
     print(f"\n[3] isi stack setelah dibalik: {reversed_string}")
 
-    pilihan_lanjut = input("\nApakah Anda ingin melakukan pembalikan lagi? (y/n): ")
-    if pilihan_lanjut.lower() != 'y':
-        print("Terima kasih.")
-        break
+    while True:
+        pilihan_lanjut = input("\nApakah Anda ingin melakukan pembalikan lagi? (y/n): ")
+        if pilihan_lanjut.lower() == 'y':
+            print("Program dilanjutkan.")
+            break
+        elif pilihan_lanjut.lower() == 'n':
+            print("Program dihentikan.")
+            exit()
+        else:
+            print("Pilihan tidak valid. Pilih (y/n).")
+            
+        
+        
