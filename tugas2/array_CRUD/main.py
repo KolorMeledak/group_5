@@ -1,5 +1,3 @@
-import os
-
 array = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
 
 def display(arr):
@@ -33,7 +31,6 @@ def delete(arr, location):
     print(f'Data di lokasi {location} telah dihapus')
     return new_arr
 
-os.system('cls')
 print('Operasi array')
 while True:
     print("1. Tampilkan array")
@@ -49,6 +46,7 @@ while True:
     elif choice == '2':
         print('\n')
         data = input("Masukkan data yang akan ditambahkan: ")
+        data = ' '.join(data.split())
         location_input = input("Masukkan lokasi penambahan (1-{}): ".format(len(array)))
         if not location_input.isdigit():
             print("Lokasi invalid")
@@ -66,6 +64,4 @@ while True:
         break
     else:
         print("Pilihan tidak valid, silakan coba lagi.")
-    
     print('\n')
-
