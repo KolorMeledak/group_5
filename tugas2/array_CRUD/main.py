@@ -39,17 +39,21 @@ while True:
     print("4. Keluar")
     
     choice = input("Pilih operasi (1-4): ")
-    
+     
     if choice == '1':
+        print('\n')
         display(array)
     elif choice == '2':
+        print('\n')
         data = input("Masukkan data yang akan ditambahkan: ")
+        data = ' '.join(data.split())
         location_input = input("Masukkan lokasi penambahan (1-{}): ".format(len(array)))
         if not location_input.isdigit():
             print("Lokasi invalid")
             continue
         array = add(array, data, int(location_input))
     elif choice == '3':
+        print('\n')
         location_input = input("Masukkan lokasi data yang akan dihapus (1-{}): ".format(len(array)))
         if not location_input.isdigit():
             print("Lokasi invalid")
@@ -60,4 +64,4 @@ while True:
         break
     else:
         print("Pilihan tidak valid, silakan coba lagi.")
-
+    print('\n')
