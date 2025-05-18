@@ -1,5 +1,5 @@
 stack = []
-MAX_DATA = 8
+MAX_DATA = int(input("masukkan limit datanya: "))
 
 while True:
     print("\nPilihan:")
@@ -30,7 +30,9 @@ while True:
                 print(f"nama '{removed}' dihapus dari stack, (Sisa item: {len(stack)}/{MAX_DATA})")
             else:
                 print("Stack kosong, tidak ada data yang dapat dihapus.")
+
         case "0" :
             break
+        
         case _:
             print("Input tidak valid")
