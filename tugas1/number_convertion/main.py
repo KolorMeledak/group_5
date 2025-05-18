@@ -25,7 +25,7 @@ def conversion(target, number):
     
 while True:
     print("KONVERSI BILANGAN")    
-    conversion_target = input("Masukkan basis bilangan tujuan, (jika ingin mengubah ke beberapa basis, pisahkan dengan spasi): ")
+    conversion_target = input("Masukkan basis bilangan tujuan diantara 2 dan 16 (jika ingin mengubah ke beberapa basis, pisahkan dengan spasi): ")
     conversion_target = conversion_target.split()
     if not all(i.isdigit() and 2 <= int(i) <= 16 for i in conversion_target):
         print("Semua basis harus berupa angka antara 2 dan 16!")
