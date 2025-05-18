@@ -2,9 +2,9 @@
 
 repeater = True
 tumpukan = ["agus","beni","budy","ianto"]
-print(*tumpukan, sep=', ')
 
 while repeater:
+    print(*tumpukan, sep=', ')
     selection = input("1. Tambah Stek\n2. Kurangi Stek\n3. Lihat Paling Atas Stek\n4. Cek Stek\n5. Ukuran Stek\n0. Exit")
 
     match selection:
@@ -12,12 +12,10 @@ while repeater:
             nama = input("Masukkan nama yang ingin ditambah:\n")
             print(f"Added {nama}\n")
             tumpukan.append(nama)
-            print(*tumpukan, sep=', ')
         case "2":
             if tumpukan:
                 print(f"Removed {tumpukan[-1]}")
                 tumpukan.pop(-1)
-                print(*tumpukan, sep=', ')
             else:
                  print("Can't remove from an empty stack")
         case "3":
