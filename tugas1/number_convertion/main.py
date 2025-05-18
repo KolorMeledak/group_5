@@ -12,6 +12,7 @@ def conversion(target, number, precision = 5):
         return "0"
     else:
         while int_number > 0:
+            print(f'{int_number} % {target} = {int_number // target} sisa {int_number % target}')
             result = symbols[int_number % target] + result
             int_number //= target
 
@@ -21,7 +22,9 @@ def conversion(target, number, precision = 5):
             result += "."
             while frac_number > 0 and precision > 0:
                 precision -= 1
+                before = frac_number
                 frac_number *= target
+                print(f'{before} x {target} = {frac_number} → ambil {int(frac_number)}')
                 result += symbols[int(frac_number)]
                 frac_number -= int(frac_number)
             if precision == 0 and frac_number > 0:
