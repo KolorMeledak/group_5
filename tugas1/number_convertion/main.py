@@ -6,8 +6,8 @@ def conversion(target, number, precision):
         
     result = ""
     int_number = int(number)
-    frac_number = number - int_number
-    
+    frac_number = round(number - int_number, 10)
+
     if number == 0:
         return "0"
     else:
