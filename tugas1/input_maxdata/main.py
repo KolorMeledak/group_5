@@ -1,8 +1,8 @@
 stack = []
 while True:
     try:
-        MAX_DATA = int(input("Masukkan limit datanya (angka > 0): "))
-        if MAX_DATA <= 0:
+        max_data = int(input("Masukkan limit datanya (angka > 0): "))
+        if max_data <= 0:
             print("Limit harus lebih besar dari 0.")
             continue
         break                               
@@ -27,16 +27,16 @@ while True:
                 print("Input kosong, silahkan masukkan nama.")
                 continue
 
-            if len(stack) < MAX_DATA:
+            if len(stack) < max_data:
                 stack.append(item)
-                print(f"'{item}' ditambahkan. (Total item: {len(stack)}/{MAX_DATA})")
+                print(f"'{item}' ditambahkan. (Total item: {len(stack)}/{max_data})")
             else:
                 print(f"Stack penuh! '{item}' tidak bisa ditambahkan.")
         
         case "2":
             if stack:
                 removed = stack.pop()
-                print(f"nama '{removed}' dihapus dari stack, (Sisa item: {len(stack)}/{MAX_DATA})")
+                print(f"nama '{removed}' dihapus dari stack, (Sisa item: {len(stack)}/{max_data})")
             else:
                 print("Stack kosong, tidak ada data yang dapat dihapus.")
 
