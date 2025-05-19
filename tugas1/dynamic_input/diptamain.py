@@ -18,7 +18,7 @@ while True:
                 print(f"Removed {tumpukan[-1]}")
                 tumpukan.pop()
             else:
-                 print("Can't remove from an empty stack")
+                 print("Gabisa mengurangi stack kosong.")
         case"0": 
             break
         case _: 
