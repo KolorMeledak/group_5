@@ -1,24 +1,22 @@
 while True:
         print("\nMasukkan beberapa paragraf (ketik enter 2x untuk menyelesaikan):")
         
-        paragraf = []
+        daftar_paragraf = []
         paragraf_list = []
         while True:
             baris = input()
             if baris.strip() == "":
                 if paragraf_list:
-                 paragraf.append("\n".join(paragraf_list)) 
+                 paragraf = "\n".join(paragraf_list)
+                 daftar_paragraf.append(paragraf)
                  paragraf_list = []   
                 else:
                    break
             else:
              paragraf_list.append(baris)
-        teks_input = "\n".join(paragraf)
-        daftar_paragraf = teks_input.split("\n\n")
-
+       
         for paragraf in daftar_paragraf:
-            print (f"\nIsi paragraf: {paragraf}")
-
+            # print (f"\nIsi paragraf: {paragraf}")
             stack = []
             # print("\n[1] menyimpan karakter ke dalam stack")
 
@@ -32,9 +30,7 @@ while True:
                 popped_char = stack.pop()
                 reversed_string += popped_char
                 # print(f" Pop: {popped_char} -> Hasil sementara: {reversed_string}")
-
-            print(f"\n{reversed_string}")
-
+            print(f"{reversed_string}")
 
         while True:
             pilihan_lanjut = input("\nApakah Anda ingin melakukan pembalikan lagi? (y/n): ")
