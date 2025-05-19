@@ -44,6 +44,6 @@ while True:
             break
         
         case _:
-            print("Input tidak valid, masukkan angka 1/2/0")
-            
+            print("Input tidak valid, masukkan angka 1/2/0.")
+
 print("Thanks!, Adios👋")
