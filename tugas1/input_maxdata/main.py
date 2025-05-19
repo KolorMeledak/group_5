@@ -1,11 +1,20 @@
 stack = []
-MAX_DATA = int(input("masukkan limit datanya: "))
+while True:
+    try:
+        MAX_DATA = int(input("Masukkan limit datanya (angka > 0): "))
+        if MAX_DATA <= 0:
+            print("Limit harus lebih besar dari 0.")
+            continue
+        break                               
+    except ValueError:
+        print("Input tidak valid, masukkan angka bulat positif.")
 
 while True:
     print("\nPilihan:")
     print("1. Tambah item\n2. Hapus item terakhir\n0. Selesai")
 
     print("\nIsi Stack:\n"+ '\n'.join(stack[::-1]) if stack else "\nIsi Stack:\n(stack kosong)")
+    print("===========================================\n")
 
     pilihan = input("Masukkan pilihan (1/2/0): ")
 
@@ -35,4 +44,6 @@ while True:
             break
         
         case _:
-            print("Input tidak valid")
+            print("Input tidak valid, masukkan angka 1/2/0")
+
+print("Thanks!, Adios👋")
