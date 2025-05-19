@@ -1,4 +1,4 @@
-def conversion(target, number, precision = 5):
+def conversion(target, number, precision):
     dec_point = precision
     symbols = "0123456789ABCDEF"
     if number < 0:
@@ -24,9 +24,11 @@ def conversion(target, number, precision = 5):
                 precision -= 1
                 before = frac_number
                 frac_number *= target
+                frac_number = round(frac_number, 10)
                 print(f'{before} x {target} = {frac_number} → ambil {int(frac_number)}')
                 result += symbols[int(frac_number)]
                 frac_number -= int(frac_number)
+                frac_number = round(frac_number, 10)
             if precision == 0 and frac_number > 0:
                 result += f"... (dibulatkan ke {dec_point} angka di belakang koma)" 
         return result
@@ -50,6 +52,8 @@ while True:
     precision = input('\nMasukan jumlah angka di belakang koma (default 5): ')
     if precision.isdigit():
         precision = int(precision)
+    else:
+        precision = 5
 
     for i in conversion_target:
         print(f"Angka {conversion_number} dalam basis {i} adalah: {conversion(int(i), conversion_number, precision)}")
