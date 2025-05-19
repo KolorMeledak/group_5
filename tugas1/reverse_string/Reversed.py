@@ -30,7 +30,7 @@ while True:
                 popped_char = stack.pop()
                 reversed_string += popped_char
                 # print(f" Pop: {popped_char} -> Hasil sementara: {reversed_string}")
-            print(f"{reversed_string}")
+            print(f"\n{reversed_string}")
 
         while True:
             pilihan_lanjut = input("\nApakah Anda ingin melakukan pembalikan lagi? (y/n): ")
