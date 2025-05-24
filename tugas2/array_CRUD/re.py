@@ -1,4 +1,4 @@
-array = input("Isi array (pisahkan dengan spasi): ").split()
+array = ['aa', 'ab', 'bb']
 array.sort()
 
 def add(list, item):
@@ -39,7 +39,7 @@ while True:
             except ValueError as e:
                 print(e)
         case '3':
-            print("Data saat ini:", array)
+            print(f"Data saat ini: {', '.join(array)}")
         case '0':
             break
         case _:
