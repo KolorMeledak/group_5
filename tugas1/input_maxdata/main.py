@@ -21,7 +21,7 @@ while True:
     match pilihan:
         case '1': 
             user_input = input("Nama: ")
-            item = " ".join(user_input.split())
+            item = " ".join(user_input.split()) #rafly rabbany
 
             if not item:
                 print("Input kosong, silahkan masukkan nama.")
