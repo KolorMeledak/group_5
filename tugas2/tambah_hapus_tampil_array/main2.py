@@ -38,7 +38,12 @@ while True:
                 print("  (Antrian kosong, tidak ada kota yang bisa dihapus.)")
                 continue
 
-            data = input("Masukkan nomor urutan atau nama kota yang ingin dihapus (Secara default akan menghapus kota pada urutan pertama): ").strip()
+            print("\n-- Daftar Kota --")
+            for i, kota in enumerate(queue, 1):
+                print(f"  {i}. {kota}")
+            print("------------------")
+
+            data = input("Masukkan nomor urutan kota yang ingin dihapus (kosongkan untuk hapus kota pertama): ").strip()
 
             if not data:
                 removed = queue.pop(0)
@@ -46,18 +51,16 @@ while True:
                 print(f"    (Sisa kota: {len(queue)}/{maxdata})")
                 continue
 
-            if data.isdigit():
-                nomor = int(data)
-                if nomor < 1 or nomor > len(queue):
-                    print(f"  Nomor tidak valid. Pilih antara 1 hingga {len(queue)}.")
-                    continue
-                index_kota = nomor - 1
-            else:
-                index_kota = next((i for i, kota in enumerate(queue) if kota.lower() == data.lower()), -1)
+            if not data.isdigit():
+                print("  Input tidak valid. Masukkan nomor urutan kota.")
+                continue
 
-                if index_kota == -1:
-                    print(f"  Kota '{data}' tidak ditemukan dalam antrian.")
-                    continue
+            nomor = int(data)
+            if nomor < 1 or nomor > len(queue):
+                print(f"  Nomor tidak valid. Pilih antara 1 hingga {len(queue)}.")
+                continue
+
+            index_kota = nomor - 1
 
             if index_kota == 0:
                 removed = queue.pop(0)
@@ -68,17 +71,18 @@ while True:
                 kota_sebelumnya = queue[:index_kota]
                 teks_kota_sebelumnya = ', '.join(kota_sebelumnya)
                 konfirmasi = input(
-                    f"  Menghapus kota {target_kota} akan menghapus juga: {teks_kota_sebelumnya}\n"
+                    f"  Menghapus kota '{target_kota}' akan menghapus juga: {teks_kota_sebelumnya}\n"
                     f"  Lanjutkan penghapusan? (y/n): "
                 ).strip().lower()
 
-                if konfirmasi == 'y':
-                    removed = queue[:index_kota + 1]
-                    del queue[:index_kota + 1]
-                    print(f"  - Kota-kota '{', '.join(removed)}' telah dihapus.")
-                    print(f"    (Sisa kota: {len(queue)}/{maxdata})")
-                else:
-                    print("  Penghapusan dibatalkan.")
+            if konfirmasi == 'y':
+                removed = queue[:index_kota + 1]
+                del queue[:index_kota + 1]
+                print(f"  - Kota-kota '{', '.join(removed)}' telah dihapus.")
+                print(f"    (Sisa kota: {len(queue)}/{maxdata})")
+            else:
+                print("  Penghapusan dibatalkan.")
+
         case '3':
             if queue:
                 print("\n-- Daftar Kota (Sesuai Urutan Input) --")
@@ -86,8 +90,15 @@ while True:
                     print(f"  {i}. {kota}")
                 print("----------------------------------------")
 
-                print("\n-- Daftar Kota (Urut Abjad) --")
-                for i, kota in enumerate(sorted(queue, key=lambda x: x.lower()), 1):
+                daftar_urut = queue[:]
+                n = len(daftar_urut)
+                for i in range(n):
+                    for j in range(0, n - i - 1):
+                        if daftar_urut[j].lower() > daftar_urut[j + 1].lower():
+                            daftar_urut[j], daftar_urut[j + 1] = daftar_urut[j + 1], daftar_urut[j]
+
+                print("\n-- Daftar Kota (Sesuai Abjad) --")
+                for i, kota in enumerate(daftar_urut, 1):
                     print(f"  {i}. {kota}")
                 print("--------------------------------")
             else:
