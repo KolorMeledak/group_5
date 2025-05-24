@@ -22,21 +22,21 @@ while True:
     print('2. Hapus data')
     print('3. Tampilkan data')
     print('0. Keluar')
-    choice = input("Pilih menu: ")
+    choice = input("Pilih menu: ").strip()
     
     match choice:
         case '1':
-            new_item = input("Isi data: ")
+            new_item = input("Isi data: ").strip()
             try:
-                if not new_item.strip():
+                if not new_item:
                     raise ValueError("Input tidak boleh kosong")
                 add(array, new_item)
             except ValueError as e:
                 print(e)
         case '2':
-            del_item = input("Data yang ingin dihapus: ")
+            del_item = input("Data yang ingin dihapus: ").strip()
             try:
-                if not del_item.strip():
+                if not del_item:
                     raise ValueError("Input tidak boleh kosong")
                 remove(array, del_item)
             except ValueError as e:
