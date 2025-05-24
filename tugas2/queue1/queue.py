@@ -1,55 +1,49 @@
-def penuh(queue, max_size):
-    return len(queue) == max_size
-
 def kosong(queue):
     return len(queue) == 0
-
-def enqueue(queue, item, max_size):
-    if penuh(queue, max_size):
-        print("Antrian penuh! Tidak bisa menambahkan data.")
-    else:
-        queue.append(item)
-        print(f"'{item}' ditambahkan ke antrian.")
-
-def dequeue(queue):
-    if kosong(queue):
-        print("Antrian kosong! Tidak ada data untuk dihapus.")
-    else:
-        removed_item = queue.pop(0)
-        print(f"'{removed_item}' dihapus dari antrian.")
 
 def tampilkan_antrian(queue):
     if kosong(queue):
         print("Antrian kosong!")
-    else: 
-        print("Isi antrian:", queue)
+    else:
+        print("\nPilih jenis tampilan:")
+        print("1. Tampilkan sebagian data (dibatasi)")
+        print("2. Tampilkan semua data")
+
+        opsi = input("Masukkan pilihan (1/2): ")
+        if opsi == '1':
+            try:
+                batas = int(input("Masukkan jumlah data yang ingin ditampilkan: "))
+                print("Isi antrian terbatas:", queue[:batas])
+                if batas < len(queue):
+                    sisa = queue[batas:]
+                    print("Data berikut tidak masuk ke antrian karena penuh:", ", ".join(sisa))
+                elif batas > len(queue):
+                    kurang = batas - len(queue)
+                    print(f"Jumlah data yang diminta ({batas}) masih ada {kurang} antrian yang kosong.")
+            except ValueError:
+                print("Input tidak valid.")
+        elif opsi == '2':
+            print("Isi antrian lengkap:", queue)
+        else:
+            print("Pilihan tidak valid.")
 
 def main():
     queue = []
-    ukuran = int(input("Masukkan ukuran antrian: "))
+    data_input = input("Masukkan semua data antrian (pisahkan dengan koma): ")
+    queue = [i.strip() for i in data_input.split(",")]
+    print("Data antrian berhasil dimasukkan.")
+    print("Isi antrian:", queue)
 
     while True:
         print("\nMenu:")
-        print("1. Tambah data ke antrian")
-        print("2. Hapus data dari antrian")
-        print("3. Tampilkan isi antrian")
-        print("4. Keluar")
+        print("1. Tampilkan isi antrian")
+        print("2. Keluar")
 
-        pilihan = input("Pilih menu (1-4): ")
+        pilihan = input("Pilih menu (1-2): ")
+
         if pilihan == '1':
-            data_input = input("Masukkan data yang ingin ditambahkan: ")
-            item = [item.strip() for item in data_input.split(",")]
-            for item in item:
-                if penuh(queue, ukuran):
-                    print("Antrian penuh! Tidak bisa menambahkan data.")
-                    break
-                enqueue(queue, item, ukuran)
-
-        elif pilihan == '2':
-            dequeue(queue)
-        elif pilihan == '3':
             tampilkan_antrian(queue)
-        elif pilihan == '4':
+        elif pilihan == '2':
             print("Keluar dari program.")
             break
         else:
