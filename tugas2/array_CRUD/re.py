@@ -2,6 +2,9 @@ array = ['aa', 'ab', 'bb']
 array.sort()
 
 def add(list, item):
+    if item in list:
+        print("Item sudah ada")
+        return
     for i in range(len(list)):
         if item < list[i]:
             list.insert(i, item)
