@@ -15,7 +15,7 @@ class LinkedList:
         self.tail = None
 
     def printList(self):
-        print("Isi senarai berantai:")
+        print("Isi linked list:")
         currentNode = self.head
         while currentNode:
             currentNode.display()
@@ -94,26 +94,51 @@ class LinkedList:
         currentNode.next = currentNode.next.next
 
 
-# Pemakaian
+
+
+
+
 linkedList1 = LinkedList()
-
-linkedList1.insertFront("AGN", "Agnes Monica")
-linkedList1.insertFront("FAR", "Farhan")
-linkedList1.insertFront("RIN", "Rina Melati")
-linkedList1.insertFront("ZAS", "Zaskia")
-linkedList1.insertFront("AMN", "Aminudin")
-
-print("Keadaan awal:")
-linkedList1.printList()
-
-# linkedList1.deleteNode("RIN")
-# print("\nSetelah RIN dihapus:")
-# linkedList1.printList()
-
-# print("\nPencarian RIN:")
-# linkedList1.searchList("RIN")
-
-# print("\nPencarian FAR:")
-# linkedList1.searchList("FAR")
-
-print(f"\nHead: {linkedList1.head.nama if linkedList1.head != None else "None"}\nTail: {linkedList1.tail.nama if linkedList1.tail != None else "None"}")
+    # linkedList1.insertFront("AGN", "Agnes Monica")
+    # linkedList1.insertFront("FAR", "Farhan")
+    # linkedList1.insertFront("RIN", "Rina Melati")
+    # linkedList1.insertFront("ZAS", "Zaskia")
+    # linkedList1.insertFront("AMN", "Aminudin")
+while True:
+    if linkedList1.head:
+        linkedList1.printList()
+    else: 
+        print("List is empty.")
+    pilihan = input("Menu:\n1. Insert Front\n2. Insert Back\n3. Insert After\n4. Insert Before\n5. Delete\n6. Search\n7. Check Head and Tail\n0. Exit")
+    match pilihan:
+        case "1":
+            kode = input("Masukkan kode: ")
+            nama = input("Masukkan nama: ")
+            linkedList1.insertFront(kode, nama)
+        case "2":
+            kode = input("Masukkan kode: ")
+            nama = input("Masukkan nama: ")
+            linkedList1.insertBack(kode, nama)
+        case "3":
+            posisi = input("Masukkan kode node sebelum posisi baru: ")
+            kode = input("Masukkan kode baru: ")
+            nama = input("Masukkan nama baru: ")
+            linkedList1.insertAfter(posisi, kode, nama)
+        case "4":
+            posisi = input("Masukkan kode node setelah posisi baru: ")
+            kode = input("Masukkan kode baru: ")
+            nama = input("Masukkan nama baru: ")
+            linkedList1.insertBefore(posisi, kode, nama)
+        case "5":
+            kode = input("Masukkan kode yang ingin dihapus: ")
+            linkedList1.deleteNode(kode)
+        case "6":
+            kode = input("Masukkan kode yang ingin dicari: ")
+            linkedList1.searchList(kode)
+        case "7":
+            print(f"\nHead: {linkedList1.head.nama if linkedList1.head != None else "None"}\nTail: {linkedList1.tail.nama if linkedList1.tail != None else "None"}")
+        case "0":
+            print("Tenks ges")
+            break
+        case _:
+            print("Pilihan invalid.")
