@@ -36,10 +36,15 @@ def main():
         print("4. Keluar")
 
         pilihan = input("Pilih menu (1-4): ")
-
         if pilihan == '1':
-            item = input("Masukkan data yang ingin ditambahkan: ")
-            enqueue(queue, item, ukuran)
+            data_input = input("Masukkan data yang ingin ditambahkan: ")
+            item = [item.strip() for item in data_input.split(",")]
+            for item in item:
+                if penuh(queue, ukuran):
+                    print("Antrian penuh! Tidak bisa menambahkan data.")
+                    break
+                enqueue(queue, item, ukuran)
+
         elif pilihan == '2':
             dequeue(queue)
         elif pilihan == '3':
