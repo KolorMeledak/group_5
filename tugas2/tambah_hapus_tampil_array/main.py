@@ -47,7 +47,7 @@ while True:
 
             if not data:
                 removed = queue.pop(0)
-                print(f"  - Kota '{removed}' dihapus dari antrian (urutan pertama).")
+                print(f"  - Kota '{removed}' dihapus dari antrian.")
                 print(f"    (Sisa kota: {len(queue)}/{maxdata})")
                 continue
 
