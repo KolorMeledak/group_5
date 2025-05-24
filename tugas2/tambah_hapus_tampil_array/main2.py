@@ -38,14 +38,19 @@ while True:
                 print("  (Antrian kosong, tidak ada kota yang bisa dihapus.)")
                 continue
 
-            data = input("Masukkan nomor urutan atau nama kota yang ingin dihapus: ").strip()
+            data = input("Masukkan nomor urutan atau nama kota yang ingin dihapus (Secara default akan menghapus kota pada urutan pertama): ").strip()
+
+            if not data:
+                removed = queue.pop(0)
+                print(f"  - Kota '{removed}' dihapus dari antrian.")
+                print(f"    (Sisa kota: {len(queue)}/{maxdata})")
+                continue
 
             if data.isdigit():
                 nomor = int(data)
                 if nomor < 1 or nomor > len(queue):
                     print(f"  Nomor tidak valid. Pilih antara 1 hingga {len(queue)}.")
                     continue
-
                 index_kota = nomor - 1
             else:
                 index_kota = next((i for i, kota in enumerate(queue) if kota.lower() == data.lower()), -1)
@@ -68,19 +73,23 @@ while True:
                 ).strip().lower()
 
                 if konfirmasi == 'y':
-                    terhapus = queue[:index_kota + 1]
+                    removed = queue[:index_kota + 1]
                     del queue[:index_kota + 1]
-                    print(f"  - Kota-kota '{', '.join(terhapus)}' telah dihapus.")
+                    print(f"  - Kota-kota '{', '.join(removed)}' telah dihapus.")
                     print(f"    (Sisa kota: {len(queue)}/{maxdata})")
                 else:
                     print("  Penghapusan dibatalkan.")
-
         case '3':
             if queue:
-                print("\n-- Daftar Kota --")
+                print("\n-- Daftar Kota (Sesuai Urutan Input) --")
                 for i, kota in enumerate(queue, 1):
                     print(f"  {i}. {kota}")
-                print("------------------")
+                print("----------------------------------------")
+
+                print("\n-- Daftar Kota (Urut Abjad) --")
+                for i, kota in enumerate(sorted(queue, key=lambda x: x.lower()), 1):
+                    print(f"  {i}. {kota}")
+                print("--------------------------------")
             else:
                 print("  (Antrian kosong)")
 
