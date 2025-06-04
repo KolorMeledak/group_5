@@ -1,35 +1,40 @@
-def bubble_sort(nums, ascending=True):
-    n = len(nums)
-    print("Data awal:", nums)
+def bubble_sort(data, ascending=True):
+    n = len(data)
     for i in range(n):
-        print(f"\nIterasi ke-{i+1}:")
-        swapped = False
+        print(f"iterasi ke-{i + 1}:")
         for j in range(0, n - i - 1):
-            print(f"  Bandingkan {nums[j]} dan {nums[j+1]}", end="")
-            if ascending:
-                if nums[j] > nums[j + 1]:
-                    nums[j], nums[j + 1] = nums[j + 1], nums[j]
-                    swapped = True
-                    print(f" => Tukar => {nums}")
-                else:
-                    print(" => Tidak ditukar")
+            print(f" Bandingkan {data[j]} dan {data[j + 1]}", end="")
+            if (ascending and data[j] > data[j + 1]) or (not ascending and data[j] < data[j + 1]):
+                data [j], data[j + 1] = data[j + 1], data[j]
+                print(f" Tukar {data[j]} dan {data[j + 1]}")
             else:
-                if nums[j] < nums[j + 1]:
-                    nums[j], nums[j + 1] = nums[j + 1], nums[j]
-                    swapped = True
-                    print(f" => Tukar => {nums}")
-                else:
-                    print(" => Tidak ditukar")
-        if not swapped:
-            print("  Tidak ada pertukaran, data sudah terurut.")
-            break
-    print("\nData terurut:", nums)
+                print(" Tidak perlu ditukar")
+        print(f"Data setelah iterasi ke-{i + 1}: {data}")
+    return data
 
-data_input = input('Tulis angka yang akan diurutkan(pisahkan dengan spasi): ').split()
-data_input = [int(i) for i in data_input if i.isdigit()]
+#Input datanya
+input_data = input("Masukkan data yang ingin diurutkan (pisahkan dengan koma): ")
+input_list = input_data.split(",")
 
-arah = input ('Urutkan dari yang terkecil ke terbesar? (y/n): ').strip().lower()
-if arah == 'y':
-    bubble_sort(data_input, True)
+#Ubah jadi integer
+data_angka = []
+for angka in input_list:
+    data_angka.append(int(angka))
+
+#Pilihan mau diurut dari mana ke mana
+print("\nPilihan urutan pengurutan data:")
+print("1. Urutkan dari kecil ke besar (ascending)")
+print("2. Urutkan dari besar ke kecil (descending)")
+pilihan = input("Masukkan pilihan (1/2): ")
+
+if pilihan == "2":
+    ancending = False
+    print("\nMengurutkan data dari besar ke kecil...")
 else:
-    bubble_sort(data_input, False)
+    ancending = True
+    print("\nMengurutkan data dari kecil ke besar...")
+
+#Display
+print("\nSebelum diurutkan:", data_angka)
+hasil = bubble_sort(data_angka, ancending)
+print("\nSetelah diurutkan:", hasil)
