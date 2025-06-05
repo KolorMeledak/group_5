@@ -1,5 +1,8 @@
-def show(arr):
-    return ', '.join(map(str, [int(n) if n % 1 == 0 else n for n in arr]))
+def show(obj):
+    if isinstance(obj, list):
+        return ', '.join([str(int(n)) if n % 1 == 0 else str(n) for n in obj])
+    else:
+        return str(int(obj)) if obj % 1 == 0 else str(obj)
 
 def selection_sort(nums, ascending):
     print("Data awal:", show(nums))
@@ -7,7 +10,7 @@ def selection_sort(nums, ascending):
     for i in range(n):
         min_idx = i
         arah = "terkecil" if ascending else "terbesar"
-        print(f"\nIterasi ke-{i+1}: Cari elemen {arah} dari {nums[i:]}")
+        print(f"\nIterasi ke-{i+1}: Cari elemen {arah} dari {show(nums[i:])}")
         for j in range(i + 1, n):
             if ascending:
                 if nums[j] < nums[min_idx]:
@@ -15,10 +18,10 @@ def selection_sort(nums, ascending):
             else:
                 if nums[j] > nums[min_idx]:
                     min_idx = j
-        print(f"{arah.capitalize()} adalah {nums[min_idx]} di indeks {min_idx}")
+        print(f"{arah.capitalize()} adalah {show(nums[min_idx])} di indeks {min_idx}")
         if min_idx != i:
             nums[i], nums[min_idx] = nums[min_idx], nums[i]
-            print(f"Tukar {nums[min_idx]} dengan {nums[i]} => {show(nums)}")
+            print(f"Tukar {show(nums[min_idx])} dengan {show(nums[i])} => {show(nums)}")
         else:
             print("Tidak perlu tukar")
     print("\nData terurut:", show(nums))
