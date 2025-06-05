@@ -29,10 +29,10 @@ def selection_sort(nums, ascending):
 data_input = input('Tulis angka yang akan diurutkan(pisahkan dengan spasi): ').split()
 data_input = [float(i) for i in data_input]
 
-arah = input('Urutkan dari yang terkecil ke terbesar? (y/n): ').strip().lower()
-try:
-    if arah not in ('y', 'n'):
-        raise ValueError("Input harus 'y' atau 'n'")
-    selection_sort(data_input, True if arah == 'y' else False)
-except ValueError as e:
-    print(e)
+while True:
+    arah = input('Urutkan dari yang terkecil ke terbesar? (y/n): ').strip().lower()
+    if arah in ('y', 'n'):
+        selection_sort(data_input, True if arah == 'y' else False)
+        break
+    else:
+        print("Input harus 'y' atau 'n'")
