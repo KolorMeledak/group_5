@@ -152,7 +152,6 @@ while True:
                     node.postOrder()
                 case _:
                     print("Invalid traversal option.")
-            print()
 
         case 0:
             print("Goodbye!")
