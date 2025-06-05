@@ -23,7 +23,7 @@ def selection_sort(nums, ascending=True):
     print("\nData terurut:", join_string(nums))
 
 data_input = input('Tulis angka yang akan diurutkan(pisahkan dengan spasi): ').split()
-data_input = [int(i) for i in data_input if i.isdigit()]
+data_input = [float(i) for i in data_input]
 
 arah = input('Urutkan dari yang terkecil ke terbesar? (y/n): ').strip().lower()
 if arah == 'y':
