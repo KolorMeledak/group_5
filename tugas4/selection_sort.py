@@ -1,7 +1,7 @@
 def show(arr):
-    return ', '.join(map(str, arr))
+    return ', '.join(map(str, [int(n) if n % 1 == 0 else n for n in arr]))
 
-def selection_sort(nums, ascending=True):
+def selection_sort(nums, ascending):
     print("Data awal:", show(nums))
     n = len(nums)
     for i in range(n):
