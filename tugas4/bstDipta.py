@@ -5,6 +5,7 @@ class Node:
         self.left = node_left
         self.right = node_right
 
+
     def insertNode(self, float_value):
         if self.value == None:
             self.value = float_value
@@ -23,12 +24,14 @@ class Node:
             else:
                 self.right = Node(float_value)
 
+
     def preOrder(self):
         print(self.value, end=" ")
         if self.left:
             self.left.preOrder()
         if self.right:
             self.right.preOrder()
+
 
     def inOrder(self):
         if self.left:
@@ -37,12 +40,14 @@ class Node:
         if self.right:
             self.right.inOrder()
 
+
     def postOrder(self):
         if self.left:
             self.left.postOrder()
         if self.right:
             self.right.postOrder()
         print(self.value, end=" ")
+
 
     def findNode(self, int_target):
         if int_target < self.value:
@@ -59,6 +64,7 @@ class Node:
                 self.right.findNode(int_target)
         if self.value == int_target:
             print(f"{self.value} is found.")
+
 
     def deleteNode(self, int_target):
         if int_target < self.value:
@@ -88,22 +94,35 @@ class Node:
         return self
 
 
-    def visualize(self):
-        dot = Digraph()
+    def visualize(self, level=0, prefix="Root: "):
+        if self.right:
+            self.right.visualize(level + 1, prefix="R── ")
 
-        def addEdges(node):
-            if node is None or node.value is None:
-                return
-            dot.node(str(node.value))  
-            if node.left:
-                dot.edge(str(node.value), str(node.left.value), label="L")
-                addEdges(node.left)
-            if node.right:
-                dot.edge(str(node.value), str(node.right.value), label="R")
-                addEdges(node.right)
+        print("    " * level + prefix + str(self.value))
 
-        addEdges(self)
-        dot.render('bst_output', view=True, format='png')
+        if self.left:
+            self.left.visualize(level + 1, prefix="L── ")
+
+
+
+
+
+        def visualizePNG(self):
+            dot = Digraph()
+
+            def addEdges(node):
+                if node is None or node.value is None:
+                    return
+                dot.node(str(node.value))  
+                if node.left:
+                    dot.edge(str(node.value), str(node.left.value), label="L")
+                    addEdges(node.left)
+                if node.right:
+                    dot.edge(str(node.value), str(node.right.value), label="R")
+                    addEdges(node.right)
+
+            addEdges(self)
+            dot.render('bst_output', view=True, format='png')
 
 
 def filter(numbers):
@@ -131,7 +150,7 @@ while True:
     print("3. Find Node")
     print("4. Delete Node")
     print("5. Traverse Tree")
-    print("6. Visualize Tree")
+    print("6. Visualize Tree Image")
     print("0. Exit")
 
     try:
@@ -151,6 +170,7 @@ while True:
             for number in float_value:
                 node.insertNode(float(number))
                 print(f"{float(number)} has been inserted.")
+            node.visualize()
 
         case 3:
             if node:
@@ -194,7 +214,7 @@ while True:
                     print("Invalid traversal option.")
 
         case 6:
-            node.visualize()
+            node.visualizePNG()
 
         case 0:
             print("Goodbye!")
