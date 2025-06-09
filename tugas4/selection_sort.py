@@ -27,9 +27,15 @@ data_input = input('Tulis angka yang akan diurutkan(pisahkan dengan spasi): ').s
 data_input = [float(i) for i in data_input]
 
 while True:
-    arah = input('Urutkan dari yang terkecil ke terbesar? (y/n): ').strip().lower()
+    arah = input('Urutkan dari yang terkecil ke terbesar? (yna): ').strip().lower()
     if arah in ['y', 'n']:
         selection_sort(data_input, True if arah == 'y' else False)
+        break
+    elif arah == 'a':
+        print("-------------------------\nTerkecil ke terbesar:")
+        selection_sort(data_input, True)
+        print("-------------------------\nTerbesar ke terkecil:")
+        selection_sort(data_input, False)
         break
     else:
         print("Input harus 'y' atau 'n'")
