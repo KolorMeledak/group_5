@@ -1,8 +1,7 @@
 def show(obj):
     if isinstance(obj, list):
         return ', '.join([str(int(n)) if n % 1 == 0 else str(n) for n in obj])
-    else:
-        return str(int(obj)) if obj % 1 == 0 else str(obj)
+    return str(int(obj)) if obj % 1 == 0 else str(obj)
 
 def selection_sort(nums, ascending):
     print("Data awal:", show(nums))
@@ -27,7 +26,7 @@ data_input = [float(i) for i in data_input]
 
 while True:
     arah = input('Urutkan dari yang terkecil ke terbesar? (y/n): ').strip().lower()
-    if arah in ('y', 'n'):
+    if arah in ['y', 'n']:
         selection_sort(data_input, True if arah == 'y' else False)
         break
     else:
