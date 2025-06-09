@@ -94,16 +94,17 @@ class Node:
         def addEdges(node):
             if node is None or node.value is None:
                 return
-            dot.node(str(id(node)), str(node.value))
+            dot.node(str(node.value))  
             if node.left:
-                dot.edge(str(id(node)), str(id(node.left)), label="L")
+                dot.edge(str(node.value), str(node.left.value), label="L")
                 addEdges(node.left)
             if node.right:
-                dot.edge(str(id(node)), str(id(node.right)), label="R")
+                dot.edge(str(node.value), str(node.right.value), label="R")
                 addEdges(node.right)
 
         addEdges(self)
         dot.render('bst_output', view=True, format='png')
+
 
 def filter(numbers):
     finalArray = []
