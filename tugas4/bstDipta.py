@@ -1,27 +1,27 @@
 from graphviz import Digraph
 class Node:
-    def __init__(self, int_value, node_left=None, node_right=None):
-        self.value = int_value
+    def __init__(self, float_value, node_left=None, node_right=None):
+        self.value = float_value
         self.left = node_left
         self.right = node_right
 
-    def insertNode(self, int_value):
+    def insertNode(self, float_value):
         if self.value == None:
-            self.value = int_value
+            self.value = float_value
             return
-        if int_value == self.value:
+        if float_value == self.value:
             print("You need to input a non existing data.")
             return
-        elif int_value < self.value:
+        elif float_value < self.value:
             if self.left:
-                self.left.insertNode(int_value)
+                self.left.insertNode(float_value)
             else:
-                self.left = Node(int_value)
+                self.left = Node(float_value)
         else:
             if self.right:
-                self.right.insertNode(int_value)
+                self.right.insertNode(float_value)
             else:
-                self.right = Node(int_value)
+                self.right = Node(float_value)
 
     def preOrder(self):
         print(self.value, end=" ")
@@ -94,22 +94,23 @@ class Node:
         def addEdges(node):
             if node is None or node.value is None:
                 return
-            dot.node(str(id(node)), str(node.value))  # add node
+            dot.node(str(node.value))  
             if node.left:
-                dot.edge(str(id(node)), str(id(node.left)), label="L")
+                dot.edge(str(node.value), str(node.left.value), label="L")
                 addEdges(node.left)
             if node.right:
-                dot.edge(str(id(node)), str(id(node.right)), label="R")
+                dot.edge(str(node.value), str(node.right.value), label="R")
                 addEdges(node.right)
 
         addEdges(self)
         dot.render('bst_output', view=True, format='png')
 
+
 def filter(numbers):
     finalArray = []
     temp = ""
     for char in numbers:
-        if char != " ":
+        if char != " " and char != ",":
             temp += char
         else:
             if temp:
@@ -141,27 +142,27 @@ while True:
 
     match int_choice:
         case 1:
-            int_value = int(input("Enter integer to insert: "))
-            node.insertNode(int_value)
-            print(f"{int_value} has been inserted.")
+            float_value = float(input("Enter integer to insert: "))
+            node.insertNode(float_value)
+            print(f"{float_value} has been inserted.")
             
         case 2:
-            int_value = filter(input("Enter integers to insert: "))
-            for number in int_value:
-                node.insertNode(int(number))
-                print(f"{int(number)} has been inserted.")
+            float_value = filter(input("Enter integers to insert: "))
+            for number in float_value:
+                node.insertNode(float(number))
+                print(f"{float(number)} has been inserted.")
 
         case 3:
             if node:
-                int_value = int(input("Enter integer to find: "))
-                node.findNode(int_value)
+                float_value = float(input("Enter integer to find: "))
+                node.findNode(float_value)
             else:
                 print("Tree is empty.")
 
         case 4:
             if node:
-                int_value = int(input("Enter integer to delete: "))
-                node = node.deleteNode(int_value)
+                float_value = float(input("Enter integer to delete: "))
+                node = node.deleteNode(float_value)
             else:
                 print("Tree is empty.")
 
