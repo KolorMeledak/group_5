@@ -38,8 +38,8 @@ while True:
         print("Tidak ada angka valid yang dimasukkan. Silakan coba lagi.")
         continue
 
-    arah_urut = input('Urutkan dari yang terkecil ke terbesar? (y/n): ').strip().lower()
-    if arah_urut == 'y':
+    descending = input('Urutkan dari yang terkecil ke terbesar? (y/n): ').strip().lower()
+    if descending == 'y':
         insertion_sort(nums, True)
     else:
         insertion_sort(nums, False)
