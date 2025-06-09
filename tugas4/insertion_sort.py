@@ -54,7 +54,7 @@ def insertion_sort(nums, ascending=True):
     print(f"Hasil Akhir: {nums}")
 
 while True:
-    # 42 17 8 93 56 31 70 12 85 6 49 23 67 90
+    # 42 17 8 -93 56 3.1 -70 12 85 6 49 23 6.7
     input_pengguna_str = input('\nMasukkan angka yang akan diurutkan (pisahkan dengan spasi): ').split()
 
     nums = []
