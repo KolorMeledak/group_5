@@ -6,12 +6,11 @@ def show(obj):
 
 def selection_sort(nums, ascending):
     print("Data awal:", show(nums))
-    n = len(nums)
-    for i in range(n):
+    for i in range(len(nums)):
         min_idx = i
         arah = "terkecil" if ascending else "terbesar"
         print(f"\nIterasi ke-{i+1}: Cari elemen {arah} dari {show(nums[i:])}")
-        for j in range(i + 1, n):
+        for j in range(i + 1, len(nums)):
             if ascending:
                 if nums[j] < nums[min_idx]:
                     min_idx = j
