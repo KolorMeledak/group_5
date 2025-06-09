@@ -14,13 +14,13 @@ def selection_sort(nums, ascending):
             compare = nums[j] < nums[i_min] if ascending else nums[j] > nums[i_min]
             if compare:
                 i_min = j
-        print(f"{arah.capitalize()} adalah {show(nums[i_min])} di indeks {i_min}")
+        print(f"{arah.capitalize()} adalah {show(nums[i_min])} di indeks {i_min}", end=", ")
         if i_min != i:
             min = nums.pop(i_min)
-            print(f"Geser {show(min)} ke indeks {i}")
+            print(f"geser {show(min)} ke indeks {i}")
             nums.insert(i, min)
         else:
-            print(f"Index ke {i} ({show(nums[i])}) sudah benar")
+            print(f"sudah benar")
         print(f"Hasil iterasi ke-{i + 1}: {show(nums)}")
     print(f"\nData terurut: {show(nums)}")
 
