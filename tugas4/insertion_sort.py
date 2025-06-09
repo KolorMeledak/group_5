@@ -47,7 +47,7 @@ def insertion_sort(nums, ascending=True):
             print(f"    {elemen_saat_ini} sudah pada tempatnya, tidak perlu geser.")
 
         nums[j + 1] = elemen_saat_ini
-        print(f"  Tempatkan {elemen_saat_ini} di posisi ke-{j + 2}. Data: {nums}")
+        print(f"  Sisipkan {elemen_saat_ini} di posisi ke-{j + 2}. Data: {nums}")
         print(f"  Terurut: {nums[:i+1]} | Sisa: {nums[i+1:]}")
 
     print("\n--- Insertion Sort Selesai ---")
