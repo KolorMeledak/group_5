@@ -9,7 +9,11 @@ def selection_sort(nums, ascending):
     for i in range(0, len(nums)):
         i_min = i
         arah = "terkecil" if ascending else "terbesar"
-        print(f"\nIterasi ke-{i + 1}: Cari elemen {arah} dari {show(nums[i:])}")
+        if i > 0:
+            sudah_urut = f'{show(nums[:i])} sudah urut, c'
+        else:
+            sudah_urut = 'C'
+        print(f"\nIterasi ke-{i + 1}:\n{sudah_urut}ari elemen {arah} dari {show(nums[i:])}")
         for j in range(i + 1, len(nums)):
             compare = nums[j] < nums[i_min] if ascending else nums[j] > nums[i_min]
             if compare:
@@ -35,9 +39,9 @@ while True:
         break
     elif arah == "a":
         print("-------------------------\nTerkecil ke terbesar:")
-        selection_sort(data_input, True)
+        selection_sort(data_input.copy(), True)
         print("-------------------------\nTerbesar ke terkecil:")
-        selection_sort(data_input, False)
+        selection_sort(data_input.copy(), False)
         break
     else:
-        print("Input harus 'y' atau 'n'")
+        print("Input harus diantara 'y', 'n', atau 'a'")
