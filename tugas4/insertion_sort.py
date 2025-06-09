@@ -22,7 +22,7 @@ def insertion_sort(nums, ascending=True):
         print(f"  Ambil: {elemen_saat_ini}")
         print(f"  Bandingkan dengan: {nums[:i]}")
 
-        pergeseran_terjadi = False
+        geser = False
         while j >= 0:
             should_shift = False
             if ascending:
@@ -31,7 +31,7 @@ def insertion_sort(nums, ascending=True):
                 should_shift = nums[j] < elemen_saat_ini
 
             if should_shift:
-                pergeseran_terjadi = True
+                geser = True
                 nilai_digeser = nums[j]
                 nums[j + 1] = nums[j]
                 
@@ -43,7 +43,7 @@ def insertion_sort(nums, ascending=True):
             else:
                 break
 
-        if not pergeseran_terjadi:
+        if not geser:
             print(f"    {elemen_saat_ini} sudah pada tempatnya, tidak perlu geser.")
 
         nums[j + 1] = elemen_saat_ini
