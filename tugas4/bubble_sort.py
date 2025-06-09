@@ -12,29 +12,46 @@ def bubble_sort(data, ascending=True):
         print(f"Data setelah iterasi ke-{i + 1}: {data}")
     return data
 
-#Input datanya
-input_data = input("Masukkan data yang ingin diurutkan (pisahkan dengan koma): ")
-input_list = input_data.split(",")
+while True:
+    #Input datanya
+    input_data = input("Masukkan data yang ingin diurutkan (pisahkan dengan koma): ")
+    input_list = input_data.split(",")
 
-#Ubah jadi integer
-data_angka = []
-for angka in input_list:
-    data_angka.append(int(angka))
+    data_angka = []
+    for angka in input_list:
+        angka_koma = float(angka)
+        if angka_koma.is_integer():
+            data_angka.append(int(angka_koma))
+        else:
+            data_angka.append(angka_koma)
 
-#Pilihan mau diurut dari mana ke mana
-print("\nPilihan urutan pengurutan data:")
-print("1. Urutkan dari kecil ke besar (ascending)")
-print("2. Urutkan dari besar ke kecil (descending)")
-pilihan = input("Masukkan pilihan (1/2): ")
+    #Pilihan mau diurut dari mana ke mana
+    print("\nPilihan urutan pengurutan data:")
+    print("1. Urutkan dari kecil ke besar (ascending)")
+    print("2. Urutkan dari besar ke kecil (descending)")
+    pilihan = input("Masukkan pilihan (1/2): ")
+    
+    if pilihan == "2":
+        ancending = False
+        print("\nMengurutkan data dari besar ke kecil...")
+    else:
+        ancending = True
+        print("\nMengurutkan data dari kecil ke besar...")
 
-if pilihan == "2":
-    ancending = False
-    print("\nMengurutkan data dari besar ke kecil...")
-else:
-    ancending = True
-    print("\nMengurutkan data dari kecil ke besar...")
-
-#Display
-print("\nSebelum diurutkan:", data_angka)
-hasil = bubble_sort(data_angka, ancending)
-print("\nSetelah diurutkan:", hasil)
+    #Display
+    print("\nSebelum diurutkan:", data_angka)
+    hasil = bubble_sort(data_angka, ancending)
+    print("\nSetelah diurutkan:", hasil)
+    
+    while True:
+        ulang = input("\nApakah Anda ingin mengulangi program? (y/n): ")
+        if ulang.lower() == 'y':
+            print("Program dilanjutkan.")
+            break
+        elif ulang.lower() == 'n':
+            print("Program dihentikan.")
+            exit()
+        else:
+            print("Pilihan tidak valid. Pilih (y/n).")
+            
+            
