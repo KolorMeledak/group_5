@@ -55,10 +55,10 @@ def insertion_sort(nums, ascending=True):
 
 while True:
     # 42 17 8 -93 56 3.1 -70 12 85 6 -4.9 23 6.79
-    input_pengguna_str = input('\nMasukkan angka yang akan diurutkan (pisahkan dengan spasi): ').split()
+    input_user = input('\nMasukkan angka yang akan diurutkan (pisahkan dengan spasi): ').split()
 
     nums = []
-    for item in input_pengguna_str:
+    for item in input_user:
         try:
             if '.' in item:
                 nums.append(float(item))
