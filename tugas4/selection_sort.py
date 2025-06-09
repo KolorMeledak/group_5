@@ -11,12 +11,9 @@ def selection_sort(nums, ascending):
         arah = "terkecil" if ascending else "terbesar"
         print(f"\nIterasi ke-{i+1}: Cari elemen {arah} dari {show(nums[i:])}")
         for j in range(i + 1, len(nums)):
-            if ascending:
-                if nums[j] < nums[min_idx]:
-                    min_idx = j
-            else:
-                if nums[j] > nums[min_idx]:
-                    min_idx = j
+            compare = nums[j] < nums[min_idx] if ascending else nums[j] > nums[min_idx]
+            if compare:
+                min_idx = j
         print(f"{arah.capitalize()} adalah {show(nums[min_idx])} di indeks {min_idx}")
         if min_idx != i:
             nums[i], nums[min_idx] = nums[min_idx], nums[i]
