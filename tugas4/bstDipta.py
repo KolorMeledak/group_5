@@ -1,5 +1,4 @@
-# I am naming the variable per data type
-
+from graphviz import Digraph
 class Node:
     def __init__(self, int_value, node_left=None, node_right=None):
         self.value = int_value
@@ -45,7 +44,6 @@ class Node:
             self.right.postOrder()
         print(self.value, end=" ")
 
-
     def findNode(self, int_target):
         if int_target < self.value:
             if self.left == None:
@@ -60,7 +58,7 @@ class Node:
             else:
                 self.right.findNode(int_target)
         if self.value == int_target:
-            print(f"{self.value} is found.")    
+            print(f"{self.value} is found.")
 
     def deleteNode(self, int_target):
         if int_target < self.value:
@@ -89,16 +87,51 @@ class Node:
 
         return self
 
-            
+
+    def visualize(self):
+        dot = Digraph()
+
+        def addEdges(node):
+            if node is None or node.value is None:
+                return
+            dot.node(str(id(node)), str(node.value))  # add node
+            if node.left:
+                dot.edge(str(id(node)), str(id(node.left)), label="L")
+                addEdges(node.left)
+            if node.right:
+                dot.edge(str(id(node)), str(id(node.right)), label="R")
+                addEdges(node.right)
+
+        addEdges(self)
+        dot.render('bst_output', view=True, format='png')
+
+def filter(numbers):
+    finalArray = []
+    temp = ""
+    for char in numbers:
+        if char != " ":
+            temp += char
+        else:
+            if temp:
+                finalArray.append(temp)
+                temp = ""
+            continue
+    if temp:
+        finalArray.append(temp)
+    return finalArray
+
+
 
 node = Node(None)
 while True:
     print("\n-- MENU --")
-    print("1: Insert Node")
-    print("2: Find Node")
-    print("3: Delete Node")
-    print("4: Traverse Tree")
-    print("0: Exit")
+    print("1. Insert Node")
+    print("2. Insert Node Array")
+    print("3. Find Node")
+    print("4. Delete Node")
+    print("5. Traverse Tree")
+    print("6. Visualize Tree")
+    print("0. Exit")
 
     try:
         int_choice = int(input("Enter choice: "))
@@ -110,23 +143,29 @@ while True:
         case 1:
             int_value = int(input("Enter integer to insert: "))
             node.insertNode(int_value)
-            print(f"{int_value} has been inserted .")
-
+            print(f"{int_value} has been inserted.")
+            
         case 2:
+            int_value = filter(input("Enter integers to insert: "))
+            for number in int_value:
+                node.insertNode(int(number))
+                print(f"{int(number)} has been inserted.")
+
+        case 3:
             if node:
                 int_value = int(input("Enter integer to find: "))
                 node.findNode(int_value)
             else:
                 print("Tree is empty.")
 
-        case 3:
+        case 4:
             if node:
                 int_value = int(input("Enter integer to delete: "))
                 node = node.deleteNode(int_value)
             else:
                 print("Tree is empty.")
 
-        case 4:
+        case 5:
             if not node:
                 print("Tree is empty.")
                 continue
@@ -152,6 +191,9 @@ while True:
                     node.postOrder()
                 case _:
                     print("Invalid traversal option.")
+
+        case 6:
+            node.visualize()
 
         case 0:
             print("Goodbye!")
