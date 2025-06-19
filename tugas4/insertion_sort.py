@@ -54,29 +54,42 @@ def insertion_sort(nums, ascending=True):
     print(f"Hasil Akhir: {nums}")
 
 while True:
-    # 42 17 8 -93 56 3.1 -70 12 85 6 -4.9 23 6.79
     input_user = input('\nMasukkan angka yang akan diurutkan (pisahkan dengan spasi): ').split()
 
-    nums = []
+    nums_original = []
     for item in input_user:
         try:
             if '.' in item:
-                nums.append(float(item))
+                nums_original.append(float(item))
             else:
-                nums.append(int(item)) 
+                nums_original.append(int(item)) 
         except ValueError:
             print(f"Peringatan: '{item}' bukan angka yang valid dan akan diabaikan.")
             continue
             
-    if not nums:
+    if not nums_original:
         print("Tidak ada angka valid yang dimasukkan. Silakan coba lagi.")
         continue
 
-    descending = input('Urutkan dari yang terkecil ke terbesar? (y/n): ').strip().lower()
-    if descending == 'y':
-        insertion_sort(nums, True)
-    else:
-        insertion_sort(nums, False)
+    print("\nPilih opsi pengurutan:")
+    print("1. Urutkan secara Ascending (Kecil ke Besar)")
+    print("2. Urutkan secara Descending (Besar ke Kecil)")
+    print("3. Urutkan Ascending dan Descending")
+
+    choice = input("Masukkan pilihan Anda (1/2/3): ").strip()
+
+    match choice:
+        case '1':
+            insertion_sort(list(nums_original), True)
+        case '2':
+            insertion_sort(list(nums_original), False)
+        case '3':
+            print("\n===== Urutan Ascending =====")
+            insertion_sort(list(nums_original), True)
+            print("\n===== Urutan Descending =====")
+            insertion_sort(list(nums_original), False)
+        case _:
+            print("Pilihan tidak valid. Silakan coba lagi.")
 
     ulang_program = input('\nJalankan program kembali? (y/n): ').strip().lower()
     if ulang_program != 'y':
