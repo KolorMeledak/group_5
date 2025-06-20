@@ -91,7 +91,7 @@ while True:
         case _:
             print("Pilihan tidak valid. Silakan coba lagi.")
 
-    ulang_program = input('\nJalankan program kembali? (y/n): ').strip().lower()
-    if ulang_program != 'y':
+    repeat = input('\nJalankan program kembali? (y/n): ').strip().lower()
+    if repeat != 'y':
         print("Thanks! Adios👋")
         break
