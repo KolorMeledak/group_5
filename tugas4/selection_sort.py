@@ -10,15 +10,20 @@ def selection_sort(nums, ascending):
         i_min = i
         arah = "terkecil" if ascending else "terbesar"
         if i > 0:
-            sudah_urut = f'{show(nums[:i])} sudah urut, c'
+            sudah_urut = f"{show(nums[:i])} sudah urut, c"
         else:
-            sudah_urut = 'C'
-        print(f"\nIterasi ke-{i + 1}:\n{sudah_urut}ari elemen {arah} dari {show(nums[i:])}")
+            sudah_urut = "C"
+        print(
+            f"\nIterasi ke-{i + 1}:\n{sudah_urut}ari elemen {arah} dari {show(nums[i:])}"
+        )
         for j in range(i + 1, len(nums)):
             compare = nums[j] < nums[i_min] if ascending else nums[j] > nums[i_min]
             if compare:
                 i_min = j
-        print(f"{arah.capitalize()} adalah {show(nums[i_min])} di indeks {i_min}", end=", ")
+        print(
+            f"{arah.capitalize()} adalah {show(nums[i_min])} di indeks {i_min}",
+            end=", ",
+        )
         if i_min != i:
             min = nums.pop(i_min)
             print(f"geser {show(min)} ke indeks {i}")
