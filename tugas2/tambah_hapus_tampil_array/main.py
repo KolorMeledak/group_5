@@ -96,30 +96,27 @@ def tampilkan_kota(queue):
         print(f"  {i}. {kota}")
     print("--------------------------------")
 
-def main():
-    queue = []
-    maxdata = input_limit()
 
-    while True:
-        print("\n===========================================")
-        print("Pilihan:")
-        print("1. Tambah kota\n2. Hapus kota\n3. Tampilkan daftar kota\n4. Selesai")
-        print("===========================================")
+queue = []
+maxdata = input_limit()
 
-        pilihan = input("Masukkan pilihan (1/2/3/4): ").strip()
+while True:
+    print("\n===========================================")
+    print("Pilihan:")
+    print("1. Tambah kota\n2. Hapus kota\n3. Tampilkan daftar kota\n4. Selesai")
+    print("===========================================")
 
-        match pilihan:
-            case '1':
-                tambah_kota(queue, maxdata)
-            case '2':
-                hapus_kota(queue, maxdata)
-            case '3':
-                tampilkan_kota(queue)
-            case '4':
-                print("Terima kasih! Adios 👋")
-                break
-            case _:
-                print("Pilihan tidak valid. Masukkan angka 1/2/3/4.")
+    pilihan = input("Masukkan pilihan (1/2/3/4): ").strip()
 
-if __name__ == "__main__":
-    main()
+    match pilihan:
+        case '1':
+            tambah_kota(queue, maxdata)
+        case '2':
+            hapus_kota(queue, maxdata)
+        case '3':
+            tampilkan_kota(queue)
+        case '4':
+            print("Terima kasih! Adios 👋")
+            break
+        case _:
+            print("Pilihan tidak valid. Masukkan angka 1/2/3/4.")
